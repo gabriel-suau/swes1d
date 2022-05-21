@@ -6,29 +6,33 @@
 namespace SWES1D
 {
 
-  template<typename T>
-  concept FluxConcept = requires(T flux, Array2D const& uL, Array2D const& uR) {
-    {flux.compute(uL, uR)} -> std::same_as<Array2D>;
-  };
+  namespace Flux
+  {
 
-  struct Rusanov {
-    Array2D compute(Array2D const& LSol, Array2D const& RSol);
-  };
+    Array2D phyFlux(Array2D Sol);
+    Array2D phyFlux(Real h, Real u);
+    // This allows to save one mult for the price of a comparison
+    // Not sure if this is efficient...
+    // Array2D phyFlux(Real h, Real u, std::optional<Real> q = std::nullopt);
 
-  struct HLL {
-    Array2D compute(Array2D const& LSol, Array2D const& RSol);
-  };
+    template<typename T>
+    concept FluxConcept = requires(T flux, Array2D const& uL, Array2D const& uR) {
+      {flux.compute(uL, uR)} -> std::same_as<Array2D>;
+    };
 
-  struct Kinetic {
-    Array2D compute(Array2D const& LSol, Array2D const& RSol);
-  };
+    struct Rusanov {
+      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+    };
 
-  Array2D phyFlux(Array2D Sol);
-  Array2D phyFlux(Real h, Real u);
+    struct HLL {
+      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+    };
 
-  // This allows to save one mult for the price of a comparison
-  // Not sure if this is efficient...
-  // Array2D phyFlux(Real h, Real u, std::optional<Real> q = std::nullopt);
+    struct Kinetic {
+      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+    };
+
+  } // namespace Flux
 
 } // namespace SWES1D
 
