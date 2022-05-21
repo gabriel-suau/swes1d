@@ -2,7 +2,6 @@
 #define SWES1D_PARAMETERS_HPP
 
 #include "libtypes/Types.hpp"
-#include <string>
 
 namespace SWES1D
 {
