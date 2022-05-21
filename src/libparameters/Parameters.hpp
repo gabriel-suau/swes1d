@@ -1,7 +1,7 @@
-#ifndef SWES1D_PARAMETERS_H
-#define SWES1D_PARAMETERS_H
+#ifndef SWES1D_PARAMETERS_HPP
+#define SWES1D_PARAMETERS_HPP
 
-#include "Types.hpp"
+#include "libtypes/Types.hpp"
 #include <string>
 
 namespace SWES1D
@@ -9,7 +9,7 @@ namespace SWES1D
 
   struct Parameters {
 
-    Parameters(std::string const& filename);
+    explicit Parameters(std::string const& filename);
 
     void readParameters();
 
@@ -31,24 +31,24 @@ namespace SWES1D
     Real cfl;
 
     /** Boundary conditions */
-    BoundaryCondition leftBC;
-    BoundaryCondition rightBC;
+    BoundaryConditionChoice leftBC;
+    BoundaryConditionChoice rightBC;
     Real impLeftH;
     Real impLeftQ;
     Real impRightH;
     Real impRightQ;
 
     /** Numerical flux */
-    NumericalFlux flux;
+    NumericalFluxChoice flux;
 
     /** Spatial order */
-    SpaceOrder ord;
+    SpaceOrderChoice ord;
 
     /** Flux/Slope limiter */
-    Limiter lim;
+    LimiterChoice lim;
 
     /** Time scheme */
-    TimeScheme tscheme;
+    TimeSchemeChoice tscheme;
 
     /** Outputs */
     std::string outputDir;
@@ -58,4 +58,4 @@ namespace SWES1D
 
 } // namespace SWES1D
 
-#endif // SWES1D_PARAMETERS_H
+#endif // SWES1D_PARAMETERS_HPP
