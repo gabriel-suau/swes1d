@@ -6,7 +6,7 @@ using namespace SWES1D;
 int main(int argc, char** argv)
 {
 
-  NumericalFlux<Rusanov> flux;
+  Rusanov flux;
 
   Array2D LSol = {0.5, 1.2};
   Array2D RSol = {1.4, 0.4};

@@ -48,4 +48,4 @@ add_subdirectory(${swes1d_source_dir}/libtimescheme)
 # SWES1D EXECUTABLE
 ##################################################
 add_executable(${swes1d_exec_name} ${swes1d_source_dir}/SWES1D.cpp)
-target_link_libraries(${swes1d_exec_name} libtypes libparameters libflux)
+target_link_libraries(${swes1d_exec_name} libtypes libparameters libflux libtimescheme)

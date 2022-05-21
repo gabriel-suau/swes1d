@@ -4,5 +4,6 @@
 #include "libtypes/Types.hpp"
 #include "libparameters/Parameters.hpp"
 #include "libflux/Flux.hpp"
+#include "libtimescheme/TimeScheme.hpp"
 
 #endif // SWES1D_HPP

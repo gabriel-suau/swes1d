@@ -2,8 +2,6 @@
 #define SWES1D_TIMESCHEME_HPP
 
 #include "libtypes/Types.hpp"
-#include "libparameters/Parameters.hpp"
-#include "libflux/Flux.hpp"
 
 namespace SWES1D
 {
