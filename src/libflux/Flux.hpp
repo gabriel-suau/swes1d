@@ -6,11 +6,6 @@
 namespace SWES1D
 {
 
-  template<typename T>
-  concept FluxType = requires(T flux, Array2D const& uL, Array2D const& uR) {
-    flux.compute(uL, uR);
-  };
-
   template<typename FluxType>
   struct NumericalFlux {
     Array2D compute(Array2D const& LSol, Array2D const& RSol) {
