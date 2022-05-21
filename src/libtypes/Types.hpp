@@ -17,7 +17,8 @@ namespace SWES1D
   using Real = double;
   using Index = unsigned int;
   using Array2D = std::array<Real, 2>;
-  using Vector = std::vector<Array2D>;
+  template<typename T>
+  using Vector = std::vector<T>;
 
   /** Define constants*/
   constexpr Real grav = 9.81;
@@ -62,6 +63,22 @@ namespace SWES1D
   Array2D operator-(Array2D x, Array2D y);
   Array2D operator*(Array2D x, Real c);
   Array2D operator*(Real c, Array2D x);
+
+  // Vector operators
+  template<typename T>
+  Vector<T>& operator+=(Vector<T>& x, Vector<T> const& y);
+  template<typename T>
+  Vector<T>& operator-=(Vector<T>& x, Vector<T> const& y);
+  template<typename T>
+  Vector<T>& operator*=(Vector<T>& x, Real c);
+  template<typename T>
+  Vector<T> operator+(Vector<T> const& x, Vector<T> const& y);
+  template<typename T>
+  Vector<T> operator-(Vector<T> const& x, Vector<T> const& y);
+  template<typename T>
+  Vector<T> operator*(Vector<T> const& x, Real c);
+  template<typename T>
+  Vector<T> operator*(Real c, Vector<T> const& x);
 
 }// namespace SWES1D
 

@@ -1,1 +1,1 @@
-add_library(libtypes Array.cpp)
+add_library(libtypes Array.cpp Vector.cpp)
