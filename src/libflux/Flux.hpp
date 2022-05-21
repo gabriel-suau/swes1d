@@ -6,22 +6,20 @@
 namespace SWES1D
 {
 
-  template<typename FluxType>
-  struct NumericalFlux {
-    Array2D compute(Array2D const& LSol, Array2D const& RSol) {
-      return static_cast<FluxType*>(this)->compute(LSol, RSol);
-    }
+  template<typename T>
+  concept FluxConcept = requires(T flux, Array2D const& uL, Array2D const& uR) {
+    {flux.compute(uL, uR)} -> std::same_as<Array2D>;
   };
 
-  struct Rusanov: NumericalFlux<Rusanov> {
+  struct Rusanov {
     Array2D compute(Array2D const& LSol, Array2D const& RSol);
   };
 
-  struct HLL: NumericalFlux<HLL> {
+  struct HLL {
     Array2D compute(Array2D const& LSol, Array2D const& RSol);
   };
 
-  struct Kinetic: NumericalFlux<Kinetic> {
+  struct Kinetic {
     Array2D compute(Array2D const& LSol, Array2D const& RSol);
   };
 
