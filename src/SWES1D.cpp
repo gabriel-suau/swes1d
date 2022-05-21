@@ -1,3 +1,4 @@
+#include "libparameters/Parameters.hpp"
 #include <cstdlib>
 
 int main(int argc, char** argv)
