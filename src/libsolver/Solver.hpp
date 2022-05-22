@@ -22,7 +22,7 @@ namespace SWES1D
   public:
     explicit Solver(Parameters* params):
       params_(params) {};
-    void solve();
+    void solve() { }
   };
 
 } // namespace SWES1D

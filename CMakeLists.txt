@@ -64,6 +64,7 @@ target_link_libraries(${swes1d_lib_name} PUBLIC
   libboundaryconditions
   libsolver)
 
+install(TARGETS ${swes1d_lib_name} LIBRARY)
 
 ##################################################
 # BENCHMARKS
