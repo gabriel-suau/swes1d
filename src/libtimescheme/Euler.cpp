@@ -6,10 +6,10 @@ namespace SWES1D
   namespace TimeScheme
   {
 
-    template<RHSConcept RHSFunc>
+    template<typename RHSType>
     Vector<Array2D>& Euler::computeOneTimeStep(Vector<Array2D>& U,
                                                Real time,
-                                               RHSFunc rhs) {
+                                               RHSType rhs) {
       U += dt_ * rhs(time, U);
       return U;
     }

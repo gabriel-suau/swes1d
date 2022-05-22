@@ -8,9 +8,13 @@ namespace SWES1D
 
   namespace TimeScheme {
 
+    struct RHSType {
+      Vector<Array2D> operator()(Real time, Vector<Array2D>& U);
+    };
+
     template<typename T>
-    concept RHSConcept = requires(T rhs, Real t, Vector<Array2D> const& U) {
-      { rhs(t,U) } -> std::same_as<Vector<Array2D>>;
+    concept TimeSchemeConcept = requires (T scheme, Real time, Vector<Array2D>& U, RHSType rhs) {
+      { scheme.computeOneTimeStep(U, time, rhs) } -> std::same_as<Vector<Array2D>>;
     };
 
     template<typename TimeSchemeType>
@@ -23,10 +27,10 @@ namespace SWES1D
       explicit TimeScheme(Real dt):
         dt_(dt) {}
 
-      template<RHSConcept RHSFunc>
+      template<typename RHSType>
       Vector<Array2D>& computeOneTimeStep(Vector<Array2D>& U,
                                           Real time,
-                                          RHSFunc rhs) {
+                                          RHSType rhs) {
         return static_cast<TimeSchemeType*>
           (this)->computeOneTimeStep(U, time, rhs);
       }
@@ -34,18 +38,18 @@ namespace SWES1D
 
     class Euler: public TimeScheme<Euler> {
       explicit Euler(Real t): TimeScheme<Euler>(t) {}
-      template<RHSConcept RHSFunc>
+      template<typename RHSType>
       Vector<Array2D>& computeOneTimeStep(Vector<Array2D>& U,
                                           Real time,
-                                          RHSFunc rhs);
+                                          RHSType rhs);
     }; // class Euler
 
     class Heun: public TimeScheme<Heun> {
       explicit Heun(Real t): TimeScheme<Heun>(t) {}
-      template<RHSConcept RHSFunc>
+      template<typename RHSType>
       Vector<Array2D>& computeOneTimeStep(Vector<Array2D>& U,
                                           Real time,
-                                          RHSFunc rhs);
+                                          RHSType rhs);
     }; // class Heun
 
   } // namespace TimeScheme
