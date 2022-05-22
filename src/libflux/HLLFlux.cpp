@@ -15,11 +15,11 @@ namespace SWES1D
 
       auto uL = qL / hL;
       auto uR = qR / hR;
-      auto sqrt_grav_hL = std::sqrt(grav * hL);
-      auto sqrt_grav_hR = std::sqrt(grav * hR);
+      auto cL = std::sqrt(grav * hL);
+      auto cR = std::sqrt(grav * hR);
 
-      auto c1 = std::min(uL - sqrt_grav_hL, uR - sqrt_grav_hR);
-      auto c2 = std::max(uL + sqrt_grav_hL, uR + sqrt_grav_hR);
+      auto c1 = std::min(uL - cL, uR - cR);
+      auto c2 = std::max(uL + cL, uR + cR);
 
       if (std::abs(c1) < epsilon && std::abs(c2) < epsilon) {
         return {0.,0.};
