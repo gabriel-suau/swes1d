@@ -8,14 +8,20 @@ namespace SWES1D
 
   struct Parameters {
 
-    explicit Parameters(std::string const& filename);
+    void setSpaceVariables(Real xmin, Real xmax, int nx);
 
-    void readParameters();
+    void setTimeVariables(Real tf, Real dt, Real cfl = -1.);
 
+    void setBoundaryConditions(BoundaryConditionChoice leftBC,
+                               Real impLeftH,
+                               Real impLeftQ,
+                               BoundaryConditionChoice rightBC,
+                               Real impRightH,
+                               Real impRightQ);
+
+    void setOutputParameters(std::string const& outputDir,
+                             int saveFreq);
     void printParameters();
-
-    /** Name of the parameters file */
-    std::string filename;
 
     /** Space variables */
     Real xmin;
@@ -36,18 +42,6 @@ namespace SWES1D
     Real impLeftQ;
     Real impRightH;
     Real impRightQ;
-
-    /** Numerical flux */
-    NumericalFluxChoice flux;
-
-    /** Spatial order */
-    SpaceOrderChoice ord;
-
-    /** Flux/Slope limiter */
-    LimiterChoice lim;
-
-    /** Time scheme */
-    TimeSchemeChoice tscheme;
 
     /** Outputs */
     std::string outputDir;

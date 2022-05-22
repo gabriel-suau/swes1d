@@ -13,6 +13,7 @@ namespace SWES1D
     Array2D phyFlux(Real h, Real u);
     // This allows to save one mult for the price of a comparison
     // Not sure if this is efficient...
+    // Also requires #include <optional>
     // Array2D phyFlux(Real h, Real u, std::optional<Real> q = std::nullopt);
 
     template<typename T>

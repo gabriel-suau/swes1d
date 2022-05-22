@@ -49,7 +49,7 @@ namespace SWES1D
   };
 
   enum class BoundaryConditionChoice {
-    ImpWaterHeight,
+    ImpWaterHeight = 1,
     ImpDischarge,
     Wall,
     Periodic
