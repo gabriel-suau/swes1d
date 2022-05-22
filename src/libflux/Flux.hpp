@@ -28,6 +28,10 @@ namespace SWES1D
       Array2D compute(Array2D const& LSol, Array2D const& RSol);
     };
 
+    struct HLLE {
+      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+    };
+
     struct Kinetic {
       Array2D compute(Array2D const& LSol, Array2D const& RSol);
     };
