@@ -16,20 +16,19 @@ namespace SWES1D
            typename TimeSchemeType, typename LeftBCType, typename RightBCType>
   class Solver {
   private:
-    Parameters* params_;
+    Parameters* params;
 
   public:
-    explicit Solver(Parameters* params): params_(params) {}
+    explicit Solver(Parameters* params): params(params) {}
 
     void solve() {
       ModelType model;
       TopographyType topo;
-      TimeSchemeType timeScheme(params_->dt);
       LeftBCType leftBC;
       RightBCType rightBC;
 
       /** Setup the topography */
-      topo.setup(*params_);
+      topo.setup(*params);
 
       // This is what is passed as the RHS to the time scheme method
       // It has to be built using the model, the topography, the
@@ -48,12 +47,12 @@ namespace SWES1D
       // Initial solution
       Vector<Array2D> U(10, {1., 0.});
 
-      // while (time < params_->tf) {
-      //   buildRHS(rhs);
-      //   U = timeScheme.computeOneTimeStep(U, time, rhs);
-      //   time += params_->dt;
-      //   iter++;
-      // }
+      while (time < params->tf) {
+        buildRHS(rhs);
+        U = TimeSchemeType::computeOneTimeStep(U, time, params->dt, rhs);
+        time += params->dt;
+        iter++;
+      }
 
     } // Solver::solve
 
