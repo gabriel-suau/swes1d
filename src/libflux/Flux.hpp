@@ -22,19 +22,19 @@ namespace SWES1D
     // };
 
     struct Rusanov {
-      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+      static Array2D compute(Array2D const& LSol, Array2D const& RSol);
     };
 
     struct HLL {
-      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+      static Array2D compute(Array2D const& LSol, Array2D const& RSol);
     };
 
     struct HLLE {
-      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+      static Array2D compute(Array2D const& LSol, Array2D const& RSol);
     };
 
     struct Kinetic {
-      Array2D compute(Array2D const& LSol, Array2D const& RSol);
+      static Array2D compute(Array2D const& LSol, Array2D const& RSol);
     };
 
   } // namespace Flux
