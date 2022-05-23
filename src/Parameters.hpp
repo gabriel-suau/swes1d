@@ -13,23 +13,37 @@ namespace SWES1D
       tf(5.), dt(0.005), cfl(0.5),
       leftBC(BoundaryConditionChoice::ImpDischarge),
       rightBC(BoundaryConditionChoice::ImpWaterHeight),
-      impLeftH(0.), impLeftQ(4.42), impRightH(2.), impRightQ(0.),
-      outputDir("."), saveFreq(50)
+      outputDir("output"), saveFreq(50)
     {}
 
-    void setSpaceVariables(Real xmin, Real xmax, int nx) {}
+    Parameters& setSpaceVariables(Real xmin, Real xmax, int nx) {
+      this->xmin = xmin;
+      this->xmax = xmax;
+      this->nx = nx;
+      return *this;
+    }
 
-    void setTimeVariables(Real tf, Real dt, Real cfl = -1.) {}
+    Parameters& setTimeVariables(Real tf, Real dt, Real cfl) {
+      this->tf = tf;
+      this->dt = dt;
+      this->cfl = cfl;
+      return *this;
+    }
 
-    void setBoundaryConditions(BoundaryConditionChoice leftBC,
-                               Real impLeftH,
-                               Real impLeftQ,
-                               BoundaryConditionChoice rightBC,
-                               Real impRightH,
-                               Real impRightQ) {}
+    Parameters& setBoundaryConditions(BoundaryConditionChoice leftBC,
+                               BoundaryConditionChoice rightBC) {
+      this->leftBC = leftBC;
+      this->rightBC = rightBC;
+      return *this;
+    }
 
-    void setOutputParameters(std::string const& outputDir,
-                             int saveFreq) {}
+    Parameters& setOutputParameters(std::string const& outputDir,
+                             int saveFreq) {
+      this->outputDir = outputDir;
+      this->saveFreq = saveFreq;
+      return *this;
+    }
+
     void printParameters() {}
 
     /** Space variables */
@@ -44,13 +58,9 @@ namespace SWES1D
     Real dt;
     Real cfl;
 
-    /** Boundary conditions */
+    /** Boundary condition choices */
     BoundaryConditionChoice leftBC;
     BoundaryConditionChoice rightBC;
-    Real impLeftH;
-    Real impLeftQ;
-    Real impRightH;
-    Real impRightQ;
 
     /** Outputs */
     std::string outputDir;
