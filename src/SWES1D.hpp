@@ -7,6 +7,6 @@
 #include "libflux/Flux.hpp"
 #include "TimeScheme.hpp"
 #include "libboundaryconditions/BoundaryConditions.hpp"
-#include "libsolver/Solver.hpp"
+#include "Solver.hpp"
 
 #endif // SWES1D_HPP

@@ -27,12 +27,6 @@ add_subdirectory(${swes1d_source_dir}/libboundaryconditions)
 
 
 ##################################################
-# LIBSOLVER
-##################################################
-add_subdirectory(${swes1d_source_dir}/libsolver)
-
-
-##################################################
 # SWES1D LIBRARY
 ##################################################
 add_library(${swes1d_lib_name} ${swes1d_source_dir}/dummy.cpp)
