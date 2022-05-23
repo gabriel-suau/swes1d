@@ -20,21 +20,25 @@ namespace SWES1D
     };
 
     class NoFriction: public Friction<NoFriction> {
+    public:
       NoFriction(): Friction(0.) {}
       void foo();
     };
 
     class Laminar: public Friction<Laminar> {
+    public:
       explicit Laminar(Real c): Friction(c) {}
       void foo();
     };
 
     class Manning: public Friction<Manning> {
+    public:
       explicit Manning(Real c): Friction(c) {}
       void foo();
     };
 
     class DarcyWeisbach: public Friction<DarcyWeisbach> {
+    public:
       explicit DarcyWeisbach(Real c): Friction(c) {}
       void foo();
     };
