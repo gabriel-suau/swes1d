@@ -30,6 +30,7 @@ namespace SWES1D
   enum class NumericalFluxChoice {
     Rusanov,
     HLL,
+    HLLE,
     Kinetic,
     VFRoe
   };
