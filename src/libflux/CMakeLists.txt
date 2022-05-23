@@ -4,5 +4,3 @@ add_library(libflux
   HLLFlux.cpp
   HLLEFlux.cpp
   KineticFlux.cpp)
-
-target_link_libraries(libflux PUBLIC libtypes)

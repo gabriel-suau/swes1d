@@ -1,7 +1,7 @@
 #ifndef SWES1D_FRICTION_MODEL_HPP
 #define SWES1D_FRICTION_MODEL_HPP
 
-#include "libtypes/Types.hpp"
+#include "Types.hpp"
 
 namespace SWES1D
 {

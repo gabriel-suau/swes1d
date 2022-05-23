@@ -1,7 +1,7 @@
 #ifndef SWES1D_FLUX_HPP
 #define SWES1D_FLUX_HPP
 
-#include "libtypes/Types.hpp"
+#include "Types.hpp"
 
 namespace SWES1D
 {
@@ -16,10 +16,10 @@ namespace SWES1D
     // Also requires #include <optional>
     // Array2D phyFlux(Real h, Real u, std::optional<Real> q = std::nullopt);
 
-    template<typename T>
-    concept FluxConcept = requires(T flux, Array2D const& uL, Array2D const& uR) {
-      {flux.compute(uL, uR)} -> std::same_as<Array2D>;
-    };
+    // template<typename T>
+    // concept FluxConcept = requires(T flux, Array2D const& uL, Array2D const& uR) {
+    //   {flux.compute(uL, uR)} -> std::same_as<Array2D>;
+    // };
 
     struct Rusanov {
       Array2D compute(Array2D const& LSol, Array2D const& RSol);
