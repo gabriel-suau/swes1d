@@ -4,6 +4,7 @@
 #include "Types.hpp"
 #include "Parameters.hpp"
 #include "libmodel/Model.hpp"
+#include "Topography.hpp"
 #include "libflux/Flux.hpp"
 #include "TimeScheme.hpp"
 #include "libboundaryconditions/BoundaryConditions.hpp"
@@ -11,8 +12,8 @@
 namespace SWES1D
 {
 
-  template<typename ModelType, typename FluxType, typename TimeSchemeType,
-           typename LeftBCType, typename RightBCType>
+  template<typename ModelType, typename TopographyType, typename FluxType,
+           typename TimeSchemeType, typename LeftBCType, typename RightBCType>
   class Solver {
   private:
     Parameters* params_;
@@ -22,9 +23,13 @@ namespace SWES1D
 
     void solve() {
       ModelType model;
+      TopographyType topo;
       TimeSchemeType timeScheme(params_->dt);
       LeftBCType leftBC;
       RightBCType rightBC;
+
+      /** Setup the topography */
+      topo.setup(*params_);
 
       // This is what is passed as the RHS to the time scheme method
       // It has to be built using the model, the topography, the
@@ -41,14 +46,14 @@ namespace SWES1D
       int iter = 0;
 
       // Initial solution
-      Vector<Array2D> U(params_->nx, {1., 0.});
+      Vector<Array2D> U(10, {1., 0.});
 
-      while (time < params_->tf) {
-        buildRHS(rhs);
-        U = timeScheme.computeOneTimeStep(U, time, rhs);
-        time += params_->dt;
-        iter++;
-      }
+      // while (time < params_->tf) {
+      //   buildRHS(rhs);
+      //   U = timeScheme.computeOneTimeStep(U, time, rhs);
+      //   time += params_->dt;
+      //   iter++;
+      // }
 
     } // Solver::solve
 

@@ -33,8 +33,7 @@ add_library(${swes1d_lib_name} ${swes1d_source_dir}/dummy.cpp)
 target_link_libraries(${swes1d_lib_name} PUBLIC
   libmodel
   libflux
-  libboundaryconditions
-  libsolver)
+  libboundaryconditions)
 
 install(TARGETS ${swes1d_lib_name} LIBRARY)
 
@@ -45,5 +44,4 @@ install(TARGETS ${swes1d_lib_name} LIBRARY)
 # target_link_libraries(${swes1d_exec_name} PUBLIC
 #   libmodel
 #   libflux
-#   libboundaryconditions
-#   libsolver)
+#   libboundaryconditions)
