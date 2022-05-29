@@ -36,13 +36,13 @@ namespace SWES1D
 {
 
   struct IOManager {
-    void saveParameters(Parameters const& params,
+    static void saveParameters(Parameters const& params,
                         std::string const& filename) {
       std::ofstream file(filename);
     }
 
     template<typename TopographyType>
-    void saveTopography(Parameters const& params,
+    static void saveTopography(Parameters const& params,
                         TopographyType const& topo,
                         std::string const& filename) {
       std::ofstream file(filename);
@@ -58,7 +58,7 @@ namespace SWES1D
     }
 
     template<typename TopographyType>
-    void saveSol(Parameters const& params,
+    static void saveSol(Parameters const& params,
                  TopographyType const& topo,
                  Vector<Array2D> const& U,
                  std::string const& filename) {

@@ -51,11 +51,10 @@ namespace SWES1D
 
     void solve() {
       ModelType model;
-      IOManager ioman;
 
       /** Save the parameters of the run */
-      std::string filename = params->outputDir + "/params.txt";
-      ioman.saveParameters(*params, filename);
+      std::string filename = params->outputDir + "/parameters.txt";
+      IOManager::saveParameters(*params, filename);
 
       /** Setup the topography */
       TopographyType topo;
@@ -67,11 +66,11 @@ namespace SWES1D
 
       /** Save the topography */
       filename = params->outputDir + "/topography.txt";
-      ioman.saveTopography(*params, topo, filename);
+      IOManager::saveTopography(*params, topo, filename);
 
       /** Save the initial condition */
       filename = params->outputDir + "/solution_0.txt";
-      ioman.saveSol(*params, topo, U, filename);
+      IOManager::saveSol(*params, topo, U, filename);
 
       // This is what is passed as the RHS to the time scheme method
       // It has to be built using the model, the topography, the
@@ -95,7 +94,7 @@ namespace SWES1D
         U = TimeSchemeType::computeOneTimeStep(U, time, params->dt, rhs);
         time += params->dt;
         iter++;
-        // ioman.saveSol(*params, topo, U, params->outputDir + "/solution_" + std::to_string(iter) + ".txt");
+          IOManager::saveSol(*params, topo, U, params->outputDir + "/solution_" + std::to_string(iter / params->saveFreq) + ".txt");
       }
 
     } // Solver::solve
