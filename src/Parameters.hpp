@@ -64,10 +64,17 @@ namespace SWES1D
       return *this;
     }
 
-    Parameters& setOutputParameters(std::string const& outputDir,
-                             int saveFreq) {
+    Parameters& setOutputParameters(OutputMode outputMode,
+                                    std::string const& outputDir,
+                                    int saveFreq) {
+      this->outputMode = outputMode;
       this->outputDir = outputDir;
       this->saveFreq = saveFreq;
+      return *this;
+    }
+
+    Parameters& setPrintLevel(PrintLevel verb) {
+      this->verb = verb;
       return *this;
     }
 
@@ -90,9 +97,12 @@ namespace SWES1D
     BoundaryConditionChoice rightBC;
 
     /** Outputs */
+    OutputMode outputMode;
     std::string outputDir;
     int saveFreq;
 
+    /** Print level */
+    PrintLevel verb;
   }; // struct Parameters
 
 } // namespace SWES1D

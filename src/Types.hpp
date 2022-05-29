@@ -83,6 +83,17 @@ namespace SWES1D
     Periodic
   };
 
+  enum class OutputMode: bool {
+    Save = true,
+    NoSave = false
+  };
+
+  enum PrintLevel {
+    Low    = 1,
+    Medium = 2,
+    High   = 3
+  };
+
   // Array operators
 
   Array2D& operator+=(Array2D& x, Array2D y) {

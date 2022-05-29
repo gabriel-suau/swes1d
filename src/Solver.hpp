@@ -94,7 +94,9 @@ namespace SWES1D
         U = TimeSchemeType::computeOneTimeStep(U, time, params->dt, rhs);
         time += params->dt;
         iter++;
+        if (params->outputMode == OutputMode::Save && params->saveFreq && params->saveFreq % iter == 0) {
           IOManager::saveSol(*params, topo, U, params->outputDir + "/solution_" + std::to_string(iter / params->saveFreq) + ".txt");
+        }
       }
 
       return std::tuple(U, time);
