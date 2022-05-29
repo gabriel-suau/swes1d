@@ -1,5 +1,5 @@
-INCLUDE_DIR  = /home/gabriel/Documents/Informatique/swes1d/src/
-LIBRARY_PATH = /home/gabriel/Documents/Informatique/swes1d/install/lib
+INCLUDE_DIR  = /usr/local/include
+LIBRARY_PATH = /usr/local/lib
 CXX          = g++ -std=c++20
 CXX_OPTIONS  = -Wall -Wextra -O3
 MAIN_FILE  = main.cpp
