@@ -20,6 +20,8 @@ namespace SWES1D
       this->xmin = xmin;
       this->xmax = xmax;
       this->nx = nx;
+      this->length = xmax - xmin;
+      this->dx = this->length / nx;
       return *this;
     }
 
@@ -31,7 +33,7 @@ namespace SWES1D
     }
 
     Parameters& setBoundaryConditions(BoundaryConditionChoice leftBC,
-                               BoundaryConditionChoice rightBC) {
+                                      BoundaryConditionChoice rightBC) {
       this->leftBC = leftBC;
       this->rightBC = rightBC;
       return *this;
