@@ -15,12 +15,6 @@ add_subdirectory(${swes1d_source_dir}/libmodel)
 
 
 ##################################################
-# LIBFLUX
-##################################################
-add_subdirectory(${swes1d_source_dir}/libflux)
-
-
-##################################################
 # LIBBOUNDARYCONDITIONS
 ##################################################
 add_subdirectory(${swes1d_source_dir}/libboundaryconditions)
@@ -32,7 +26,6 @@ add_subdirectory(${swes1d_source_dir}/libboundaryconditions)
 add_library(${swes1d_lib_name} ${swes1d_source_dir}/dummy.cpp)
 target_link_libraries(${swes1d_lib_name} PUBLIC
   libmodel
-  libflux
   libboundaryconditions)
 
 install(TARGETS ${swes1d_lib_name} LIBRARY)
@@ -43,5 +36,4 @@ install(TARGETS ${swes1d_lib_name} LIBRARY)
 # add_executable(${swes1d_exec_name} ${swes1d_source_dir}/SWES1D.cpp)
 # target_link_libraries(${swes1d_exec_name} PUBLIC
 #   libmodel
-#   libflux
 #   libboundaryconditions)

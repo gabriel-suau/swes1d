@@ -5,7 +5,7 @@
 #include "Parameters.hpp"
 #include "libmodel/Model.hpp"
 #include "Topography.hpp"
-#include "libflux/Flux.hpp"
+#include "Flux.hpp"
 #include "TimeScheme.hpp"
 #include "libboundaryconditions/BoundaryConditions.hpp"
 #include "Solver.hpp"
