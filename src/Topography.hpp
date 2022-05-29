@@ -36,12 +36,12 @@ namespace SWES1D
 
         // Compute the derivative of the topography using a second order
         // centered finite difference formula
-        this->grav_dz[0] = - gravInvTwoDx * (- 3 * this->z[0] + 4 * this->z[1] - this->z[2]);
+        this->grav_dz[0] = gravInvTwoDx * (- 3 * this->z[0] + 4 * this->z[1] - this->z[2]);
         for (int i = 1 ; i < nx - 1 ; i++) {
-          this->grav_dz[i] = - gravInvTwoDx * (this->z[i+1] - this->z[i-1]);
+          this->grav_dz[i] = gravInvTwoDx * (this->z[i+1] - this->z[i-1]);
         }
-        this->grav_dz[nx-1] = - gravInvTwoDx * (- 3 * this->z[nx-1] + 4 * this->z[nx-2] - this->z[nx-1]);
-        
+        this->grav_dz[nx-1] = gravInvTwoDx * (- 3 * this->z[nx-3] + 4 * this->z[nx-2] - this->z[nx-1]);
+
         return *this;
       }
 

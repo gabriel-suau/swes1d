@@ -3,6 +3,7 @@
 
 #include "Types.hpp"
 #include "Parameters.hpp"
+#include "Initialization.hpp"
 #include "libmodel/Model.hpp"
 #include "Topography.hpp"
 #include "Flux.hpp"
