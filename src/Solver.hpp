@@ -49,7 +49,7 @@ namespace SWES1D
   public:
     explicit Solver(Parameters const* params): params(params) {}
 
-    void solve() {
+    auto solve() {
       ModelType model;
 
       /** Save the parameters of the run */
@@ -97,6 +97,7 @@ namespace SWES1D
           IOManager::saveSol(*params, topo, U, params->outputDir + "/solution_" + std::to_string(iter / params->saveFreq) + ".txt");
       }
 
+      return std::tuple(U, time);
     } // Solver::solve
 
   private:

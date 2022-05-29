@@ -34,6 +34,7 @@
 #include <concepts>
 // #include <optional>
 #include <string>
+#include <tuple>
 #include <vector>
 
 namespace SWES1D
