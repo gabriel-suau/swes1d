@@ -21,3 +21,6 @@ TODO
 
 ## How to use the library
 TODO
+
+## License
+This project is distributed under the [GNU-GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) license. A copy of the whole license is included in the repository.
