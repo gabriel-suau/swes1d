@@ -33,7 +33,19 @@ install(TARGETS ${swes1d_lib_name} LIBRARY)
 ##################################################
 # BENCHMARKS
 ##################################################
-# add_executable(${swes1d_exec_name} ${swes1d_source_dir}/SWES1D.cpp)
-# target_link_libraries(${swes1d_exec_name} PUBLIC
-#   libmodel
-#   libboundaryconditions)
+option(SWES1D_ENABLE_BENCHMARKS "Build the SWES1D benchmark test suite" OFF)
+include(CTest)
+
+if (SWES1D_ENABLE_BENCHMARKS)
+
+  set(swes1d_bench_dir ${PROJECT_SOURCE_DIR}/benchmarks)
+
+  # add_subdirectory(${swes1d_bench_dir}/bump_rest_immerged)
+  # add_subdirectory(${swes1d_bench_dir}/bump_rest_emerged)
+  add_subdirectory(${swes1d_bench_dir}/bump_fluvial)
+  # add_subdirectory(${swes1d_bench_dir}/bump_transcritical)
+  # add_subdirectory(${swes1d_bench_dir}/bump_transcritical_wshock)
+  # add_subdirectory(${swes1d_bench_dir}/dam_break_wet)
+  # add_subdirectory(${swes1d_bench_dir}/dam_break_dry)
+
+endif(SWES1D_ENABLE_BENCHMARKS)
